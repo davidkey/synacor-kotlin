@@ -26,6 +26,7 @@ enum class OpCode(val opCode: Int, val numOfArguments: Int) {
 
     companion object {
         fun isOpCode(opCodeInt: Int): Boolean = opCodeInt in OpCode.values().map(OpCode::opCode)
-        fun fromInt(opCodeInt: Int): OpCode = OpCode.values().getOrNull(opCodeInt)?: throw RuntimeException("invalid op code $opCodeInt")
+        fun fromInt(opCodeInt: Int): OpCode =
+            OpCode.values().getOrNull(opCodeInt) ?: throw RuntimeException("invalid op code $opCodeInt")
     }
 }

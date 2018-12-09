@@ -1,9 +1,6 @@
 package com.dak.synacor
 
-import java.util.ArrayDeque
-import java.util.Collections
-import java.util.Deque
-import java.util.Scanner
+import java.util.*
 import kotlin.math.pow
 
 class SynacorVirtualMachine(private val program: MutableList<Int>) {
@@ -171,8 +168,7 @@ class SynacorVirtualMachine(private val program: MutableList<Int>) {
 
     private fun getIndexOfNextOpCode(program: List<Int>, startingIndex: Int): Int {
         for (i in startingIndex until program.size) {
-            val opCode = program[i]
-            if (OpCode.isOpCode(opCode)) {
+            if (OpCode.isOpCode(program[i])) {
                 return i
             }
         }
@@ -192,7 +188,9 @@ class SynacorVirtualMachine(private val program: MutableList<Int>) {
         return charsDeque.removeLast()
     }
 
-    private fun process(program: List<Int>, startingIndex: Int): Int = operations[OpCode.fromInt(program[startingIndex])]!!.invoke(startingIndex)
+    private fun process(program: List<Int>, startingIndex: Int): Int =
+        operations[OpCode.fromInt(program[startingIndex])]!!.invoke(startingIndex)
+
     private fun pushStack(value: Int) = stack.push(value)
     private fun popStack(): Int = stack.pop()
     private fun getRegister(index: Int): Int = registers[index % 32768]

@@ -6,7 +6,6 @@ fun main() =
 private fun getProgram(): List<Int> =
     reverseEndianess(getFileAsBytes("/challenge.bin"))
 
-
 private fun reverseEndianess(input: ByteArray): List<Int> =
     input
         .map(Byte::toUnsignedInt)
