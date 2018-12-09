@@ -1,6 +1,9 @@
 package com.dak.synacor
 
-import java.util.*
+import java.util.ArrayDeque
+import java.util.Collections
+import java.util.Deque
+import java.util.Scanner
 import kotlin.math.pow
 
 class SynacorVirtualMachine(private val program: MutableList<Int>) {
